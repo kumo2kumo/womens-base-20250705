@@ -56,11 +56,49 @@
   border-bottom: 1px solid #333;
 }
 
+.my-account__avatar-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.my-account__avatar-container:hover {
+  transform: scale(1.05);
+}
+
 .my-account__avatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  display: block;
+}
+
+.my-account__avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.my-account__avatar-container:hover .my-account__avatar-overlay {
+  opacity: 1;
+}
+
+.my-account__avatar-overlay span {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .my-account__profile h2 {
@@ -192,6 +230,63 @@
 
 .save-button:hover {
   background: #b2070f;
+}
+
+/* プロフィール画像セクション */
+.profile-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar-container {
+  position: relative;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.profile-avatar-container:hover {
+  transform: scale(1.05);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+}
+
+.profile-avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile-avatar-container:hover .profile-avatar-overlay {
+  opacity: 1;
+}
+
+.profile-avatar-overlay span {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.profile-avatar-hint {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 /* 視聴履歴セクション */
@@ -386,5 +481,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
   }
 } 

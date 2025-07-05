@@ -4,6 +4,7 @@ import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [userAvatarId, setUserAvatarId] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +18,27 @@ const Header = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // ローカルストレージからアバターを取得
+  useEffect(() => {
+    const savedAvatarId = localStorage.getItem('userAvatarId');
+    if (savedAvatarId) {
+      setUserAvatarId(parseInt(savedAvatarId));
+    }
+  }, []);
+
+  // アバター変更を監視
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const savedAvatarId = localStorage.getItem('userAvatarId');
+      if (savedAvatarId) {
+        setUserAvatarId(parseInt(savedAvatarId));
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
   const handleProfileClick = () => {
@@ -49,11 +71,23 @@ const Header = () => {
             />
           </div>
           <div className="header__profile" onClick={handleProfileClick}>
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" 
-              alt="Profile" 
+            <div 
               className="header__profile-avatar"
-            />
+              style={{
+                backgroundColor: `hsl(${(userAvatarId - 1) * 30}, 70%, 60%)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                color: 'white',
+                width: '32px',
+                height: '32px',
+                borderRadius: '4px'
+              }}
+            >
+              {userAvatarId}
+            </div>
           </div>
         </div>
       </div>

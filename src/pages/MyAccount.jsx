@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AvatarSelector from '../components/AvatarSelector';
 import './MyAccount.css';
 
 const MyAccount = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
+  const [isAvatarSelectorOpen, setIsAvatarSelectorOpen] = useState(false);
 
   // ダミーユーザーデータ
-  const user = {
+  const [user, setUser] = useState({
     name: '田中太郎',
     email: 'tanaka@example.com',
     avatar: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png',
+    avatarId: 1, // アバターIDを追加
     membership: 'プレミアム',
     joinDate: '2023年1月',
     watchHistory: [
@@ -23,11 +26,30 @@ const MyAccount = () => {
       { id: 2, title: 'ダーク', type: 'TV' },
       { id: 3, title: 'インセプション', type: 'Movie' }
     ]
-  };
+  });
 
   const handleLogout = () => {
     // ログアウト処理（実際のアプリでは認証状態をクリア）
     navigate('/');
+  };
+
+  const handleAvatarSelect = (selectedAvatar) => {
+    setUser(prevUser => ({
+      ...prevUser,
+      avatar: selectedAvatar.src,
+      avatarId: selectedAvatar.id
+    }));
+    // ローカルストレージに保存
+    localStorage.setItem('userAvatar', selectedAvatar.src);
+    localStorage.setItem('userAvatarId', selectedAvatar.id.toString());
+  };
+
+  const openAvatarSelector = () => {
+    setIsAvatarSelectorOpen(true);
+  };
+
+  const closeAvatarSelector = () => {
+    setIsAvatarSelectorOpen(false);
   };
 
   return (
@@ -45,11 +67,25 @@ const MyAccount = () => {
       <div className="my-account__content">
         <div className="my-account__sidebar">
           <div className="my-account__profile">
-            <img 
-              src={user.avatar} 
-              alt="プロフィール画像" 
-              className="my-account__avatar"
-            />
+            <div className="my-account__avatar-container" onClick={openAvatarSelector}>
+              <div 
+                className="my-account__avatar"
+                style={{
+                  backgroundColor: `hsl(${(user.avatarId - 1) * 30}, 70%, 60%)`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  color: 'white'
+                }}
+              >
+                {user.avatarId}
+              </div>
+              <div className="my-account__avatar-overlay">
+                <span>変更</span>
+              </div>
+            </div>
             <h2>{user.name}</h2>
             <p className="my-account__email">{user.email}</p>
             <div className="my-account__membership">
@@ -97,6 +133,31 @@ const MyAccount = () => {
             <div className="my-account__section">
               <h3>プロフィール情報</h3>
               <div className="profile-info">
+                <div className="profile-item">
+                  <label>プロフィール画像</label>
+                  <div className="profile-avatar-section">
+                    <div className="profile-avatar-container" onClick={openAvatarSelector}>
+                      <div 
+                        className="profile-avatar"
+                        style={{
+                          backgroundColor: `hsl(${(user.avatarId - 1) * 30}, 70%, 60%)`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.5rem',
+                          fontWeight: 'bold',
+                          color: 'white'
+                        }}
+                      >
+                        {user.avatarId}
+                      </div>
+                      <div className="profile-avatar-overlay">
+                        <span>変更</span>
+                      </div>
+                    </div>
+                    <p className="profile-avatar-hint">クリックして画像を変更</p>
+                  </div>
+                </div>
                 <div className="profile-item">
                   <label>名前</label>
                   <input type="text" defaultValue={user.name} />
@@ -207,6 +268,13 @@ const MyAccount = () => {
           )}
         </div>
       </div>
+
+      <AvatarSelector
+        isOpen={isAvatarSelectorOpen}
+        onClose={closeAvatarSelector}
+        onSelect={handleAvatarSelect}
+        currentAvatar={user.avatar}
+      />
     </div>
   );
 };
