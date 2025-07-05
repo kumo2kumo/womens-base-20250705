@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,10 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleProfileClick = () => {
+    navigate('/my-account');
+  };
 
   return (
     <header className={`header ${isScrolled ? 'header--scrolled' : ''}`}>
@@ -43,7 +48,7 @@ const Header = () => {
               className="header__search-input"
             />
           </div>
-          <div className="header__profile">
+          <div className="header__profile" onClick={handleProfileClick}>
             <img 
               src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" 
               alt="Profile" 

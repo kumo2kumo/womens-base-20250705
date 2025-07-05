@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
+import MyAccount from './pages/MyAccount';
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movie/:type/:id" element={<MovieDetail />} />
+          <Route path="/my-account" element={<MyAccount />} />
           <Route path="/tv-shows" element={<div className="coming-soon">TV番組ページ - 近日公開</div>} />
           <Route path="/movies" element={<div className="coming-soon">映画ページ - 近日公開</div>} />
           <Route path="/my-list" element={<div className="coming-soon">マイリストページ - 近日公開</div>} />

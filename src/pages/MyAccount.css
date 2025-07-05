@@ -1,0 +1,390 @@
+.my-account {
+  min-height: 100vh;
+  background-color: #111;
+  color: white;
+  padding-top: 80px;
+}
+
+.my-account__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 60px;
+  border-bottom: 1px solid #333;
+}
+
+.my-account__back-button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.my-account__back-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.my-account__header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.my-account__content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 60px;
+  gap: 40px;
+}
+
+.my-account__sidebar {
+  flex: 0 0 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 30px;
+  height: fit-content;
+}
+
+.my-account__profile {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #333;
+}
+
+.my-account__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.my-account__profile h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.my-account__email {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.membership-badge {
+  background: linear-gradient(45deg, #e50914, #b2070f);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.my-account__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.my-account__nav-item {
+  background: transparent;
+  color: #ccc;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.my-account__nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.my-account__nav-item.active {
+  background: #e50914;
+  color: white;
+}
+
+.my-account__logout-button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.my-account__logout-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.my-account__main {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.my-account__section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #e5e5e5;
+}
+
+/* プロフィールセクション */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-item label {
+  font-weight: 600;
+  color: #ccc;
+}
+
+.profile-item input {
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.profile-item input:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.membership-info {
+  color: #e50914;
+  font-weight: 600;
+}
+
+.save-button {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background: #b2070f;
+}
+
+/* 視聴履歴セクション */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border: 1px solid #333;
+}
+
+.history-item__info h4 {
+  margin-bottom: 5px;
+  color: #e5e5e5;
+}
+
+.history-item__info p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.history-item__button {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.history-item__button:hover {
+  background: #b2070f;
+}
+
+/* マイリストセクション */
+.mylist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.mylist-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.mylist-item__poster img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.mylist-item__info {
+  padding: 15px;
+}
+
+.mylist-item__info h4 {
+  margin-bottom: 5px;
+  color: #e5e5e5;
+}
+
+.mylist-item__info p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.mylist-item__remove {
+  width: 100%;
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.mylist-item__remove:hover {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+/* 設定セクション */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border: 1px solid #333;
+}
+
+.setting-item__info h4 {
+  margin-bottom: 5px;
+  color: #e5e5e5;
+}
+
+.setting-item__info p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* トグルスイッチ */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggle__slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .toggle__slider {
+  background-color: #e50914;
+}
+
+.toggle input:checked + .toggle__slider:before {
+  transform: translateX(26px);
+}
+
+@media (max-width: 768px) {
+  .my-account__content {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .my-account__sidebar {
+    flex: none;
+    width: 100%;
+  }
+
+  .my-account__header {
+    padding: 15px 20px;
+  }
+
+  .my-account__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .mylist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+} 
