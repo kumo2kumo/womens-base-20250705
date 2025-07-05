@@ -1,18 +1,23 @@
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './pages/Home';
+import './App.css';
 
 function App() {
   return (
-    /* ==== 環境構築後、以下削除 ===== */
-    <div className="app-container">
-      <div className="message-box">
-        <span className="emoji" role="img" aria-label="party">🎉</span>
-        <div className="message-text">
-          開発環境の準備ができました！<br />
-          この画面が表示されていれば、環境構築完了です！！
-        </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tv-shows" element={<div className="coming-soon">TV番組ページ - 近日公開</div>} />
+          <Route path="/movies" element={<div className="coming-soon">映画ページ - 近日公開</div>} />
+          <Route path="/my-list" element={<div className="coming-soon">マイリストページ - 近日公開</div>} />
+        </Routes>
       </div>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

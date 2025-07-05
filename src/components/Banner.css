@@ -1,0 +1,133 @@
+.banner {
+  position: relative;
+  height: 80vh;
+  color: white;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.banner__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s ease;
+}
+
+.banner__contents {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.banner__info {
+  max-width: 600px;
+}
+
+.banner__title {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.banner__description {
+  width: 100%;
+  line-height: 1.3;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  max-width: 500px;
+  height: 80px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.banner__buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.banner__button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.banner__button--play {
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
+.banner__button--play:hover {
+  color: black;
+  background-color: #e6e6e6;
+}
+
+.banner__button--info {
+  background-color: rgba(109, 109, 110, 0.7);
+}
+
+.banner__button--info:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+}
+
+.banner__button-icon {
+  font-size: 1.2rem;
+}
+
+.banner__fadeBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 60vh;
+  }
+  
+  .banner__contents {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .banner__title {
+    font-size: 2rem;
+  }
+  
+  .banner__description {
+    font-size: 1rem;
+    height: 60px;
+  }
+  
+  .banner__button {
+    padding: 0.4rem 1.5rem;
+    font-size: 0.9rem;
+  }
+} 
