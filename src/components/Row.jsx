@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Row.css';
 
 const Row = ({ title, movies, isLargeRow = false }) => {
   const [isHovered, setIsHovered] = useState(null);
   const rowRef = useRef(null);
+  const navigate = useNavigate();
 
   const scroll = (direction) => {
     if (rowRef.current) {
@@ -17,6 +19,12 @@ const Row = ({ title, movies, isLargeRow = false }) => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleMovieClick = (movie) => {
+    // 映画かTV番組かを判定（media_typeプロパティがある場合はそれを使用、ない場合は推測）
+    const mediaType = movie.media_type || (movie.title ? 'movie' : 'tv');
+    navigate(`/movie/${mediaType}/${movie.id}`);
   };
 
   return (
@@ -38,6 +46,7 @@ const Row = ({ title, movies, isLargeRow = false }) => {
               className={`row__poster ${isLargeRow ? 'row__poster--large' : ''}`}
               onMouseEnter={() => setIsHovered(movie.id)}
               onMouseLeave={() => setIsHovered(null)}
+              onClick={() => handleMovieClick(movie)}
             >
               <img
                 className="row__poster-img"
@@ -60,13 +69,25 @@ const Row = ({ title, movies, isLargeRow = false }) => {
                       }
                     </p>
                     <div className="row__poster-buttons">
-                      <button className="row__poster-button row__poster-button--play">
+                      <button 
+                        className="row__poster-button row__poster-button--play"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleMovieClick(movie);
+                        }}
+                      >
                         ▶ 再生
                       </button>
-                      <button className="row__poster-button row__poster-button--add">
+                      <button 
+                        className="row__poster-button row__poster-button--add"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         +
                       </button>
-                      <button className="row__poster-button row__poster-button--like">
+                      <button 
+                        className="row__poster-button row__poster-button--like"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         👍
                       </button>
                     </div>
